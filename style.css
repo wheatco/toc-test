@@ -1,0 +1,21 @@
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+p {
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.toc-wrap {
+  position: relative;
+}
+.toc.floating {
+  position: fixed;
+  top: 10px;
+}
+.toc-link.active {
+  color: #f00;
+}

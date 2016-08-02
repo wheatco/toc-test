@@ -14,7 +14,6 @@
     };
   };
 
-
   function loadToc($content, $toc, selector) {
     var headerHeights = {};
 
@@ -69,17 +68,20 @@
     window.recacheHeights = recacheHeights;
   }
 
+  var sticky = function() {
+    $('.toc-wrap').each(function() {
+      if ($(this).offset().top <= $(document).scrollTop() + 10) {
+        $(this).children('.toc').addClass('floating');
+      } else {
+        $(this).children('.toc').removeClass('floating');
+      }
+    })
+  };
+
   $(function() {
     loadToc($('.content'), $('.toc-content'), 'h1');
-    $(window).scroll(debounce(function() {
-      $('.toc-wrap').each(function() {
-        if ($(this).offset().top <= $(document).scrollTop() + 10) {
-          $(this).children('.toc').addClass('floating');
-        } else {
-          $(this).children('.toc').removeClass('floating');
-        }
-      })
-    }));
+    $(window).scroll(debounce(sticky));
+    sticky();
   })
 
 })();
