@@ -11,9 +11,21 @@
       .active {
         color: #f00;
       }
+      .toc-wrap {
+        position: relative;
+      }
+      .toc.floating {
+        position: fixed;
+        top: 10px;
+      }
     </style>
   </head>
   <body>
+    <p class="">This header goes above everything and takes up space</p>
+    <p class="">This header goes above everything and takes up space</p>
+    <p class="">This header goes above everything and takes up space</p>
+    <p class="">This header goes above everything and takes up space</p>
+    <p class="">This header goes above everything and takes up space</p>
     <div class="wrap row gap-3">
       <div class="content fill-3">
         <h1 id="header-1">Header 1</h1>
@@ -46,8 +58,11 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, non facere. At inventore tempore nihil maiores, a aut. Laboriosam consectetur provident aliquid voluptas consequatur tempora nisi, ducimus illo doloremque eveniet!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, non facere. At inventore tempore nihil maiores, a aut. Laboriosam consectetur provident aliquid voluptas consequatur tempora nisi, ducimus illo doloremque eveniet!</p>
       </div>
-      <div class="toc col fill-1">
-        <a href="#">Custom Non-nav link</a>
+      <div class="toc-wrap col fill-1">
+        <div class="toc col fill-1">
+          <div class="col toc-content"></div>
+          <a href="#">Custom Non-nav link</a>
+        </div>
       </div>
     </div>
   </body>

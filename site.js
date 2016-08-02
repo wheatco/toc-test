@@ -1,7 +1,21 @@
-(function (global) {
+;(function () {
   'use strict';
 
-  global.loadToc = function($content, $toc, selector) {
+  var debounce = function(func, waitTime) {
+    var timeout = false;
+    return function() {
+      if (timeout === false) {
+        setTimeout(function() {
+          func();
+          timeout = false;
+        }, waitTime);
+        timeout = true;
+      }
+    };
+  };
+
+
+  function loadToc($content, $toc, selector) {
     var headerHeights = {};
 
     var recacheHeights = function() {
@@ -24,19 +38,6 @@
       }
 
       $(".toc a[href='#" + best + "']").addClass("active");
-    };
-
-    var debounce = function(func, waitTime) {
-      var timeout = false;
-      return function() {
-        if (timeout === false) {
-          setTimeout(function() {
-            func();
-            timeout = false;
-          }, waitTime);
-          timeout = true;
-        }
-      };
     };
 
     var generateToc = function() {
@@ -65,11 +66,20 @@
 
     $(makeToc);
 
-    global.recacheHeights = recacheHeights;
+    window.recacheHeights = recacheHeights;
   }
 
-})(window);
+  $(function() {
+    loadToc($('.content'), $('.toc-content'), 'h1');
+    $(window).scroll(debounce(function() {
+      $('.toc-wrap').each(function() {
+        if ($(this).offset().top <= $(document).scrollTop() + 10) {
+          $(this).children('.toc').addClass('floating');
+        } else {
+          $(this).children('.toc').removeClass('floating');
+        }
+      })
+    }));
+  })
 
-$(function() {
-  window.loadToc($('.content'), $('.toc'), 'h1');
-})
+})();
