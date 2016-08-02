@@ -11,11 +11,43 @@ p {
 }
 .toc-wrap {
   position: relative;
+  width: 300px;
+}
+.toc {
+  width: inherit;
+}
+.toc-content {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .toc.floating {
   position: fixed;
   top: 10px;
 }
+.toc-link {
+  padding: 10px;
+  text-decoration: none;
+  color: #0C69DD;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+.toc-link:last-child {
+  border-bottom: none;
+}
+.toc-link:hover {
+  background-color: #f6f6f6;
+}
 .toc-link.active {
-  color: #f00;
+  /*color: #f00;*/
+  background-color: #0C69DD;
+  color: #fff;
+}
+.toc-extra-link {
+  font-size: 0.8em;
+  text-decoration: none;
+  color: #0C69DD;
+}
+.toc-extra-link:hover {
+  text-decoration: underline;
 }
