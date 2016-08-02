@@ -46,7 +46,7 @@
         return "<a class='toc-link' href='" + href + "'>" + text + "</a>";
       }).get().join('');
 
-      $toc.html(tocHtml);
+      $toc.prepend(tocHtml);
     }
 
     var makeToc = function() {
